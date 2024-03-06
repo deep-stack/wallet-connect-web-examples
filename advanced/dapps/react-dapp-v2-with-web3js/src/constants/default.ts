@@ -23,7 +23,7 @@ export const DEFAULT_PROJECT_ID = process.env.NEXT_PUBLIC_PROJECT_ID;
 
 export const DEFAULT_RELAY_URL = process.env.NEXT_PUBLIC_RELAY_URL;
 
-export const DEFAULT_EIP155_METHODS = ["eth_sendTransaction", "personal_sign", "eth_signTypedData"];
+export const DEFAULT_EIP155_METHODS = ["personal_sign", "eth_signTypedData"];
 
 export const DEFAULT_LOGGER = "debug";
 
