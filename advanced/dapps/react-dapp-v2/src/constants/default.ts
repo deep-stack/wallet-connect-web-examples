@@ -6,37 +6,12 @@ if (!process.env.NEXT_PUBLIC_PROJECT_ID)
 export const DEFAULT_MAIN_CHAINS = [
   // mainnets
   "eip155:1",
-  "eip155:10",
-  "eip155:100",
-  "eip155:137",
-  "eip155:324",
-  "eip155:42161",
-  "eip155:42220",
-  "cosmos:cosmoshub-4",
-  "solana:4sGjMW1sUnHzSxGspuhpqLDx6wiyjNtZ",
-  "polkadot:91b171bb158e2d3848fa23a9f1c25182",
-  "mvx:1",
-  "tron:0x2b6653dc",
-  "tezos:mainnet",
-  "kadena:mainnet01",
 ];
 
 export const DEFAULT_TEST_CHAINS = [
   // testnets
   "eip155:5",
   "eip155:11155111",
-  "eip155:280",
-  "eip155:420",
-  "eip155:80001",
-  "eip155:421611",
-  "eip155:44787",
-  "solana:8E9rvCKLFQia2Y35HXjjpWzj8weVo44K",
-  "polkadot:e143f23803ac50e8f6f8e62695d1ce9e",
-  "near:testnet",
-  "mvx:D",
-  "tron:0xcd8690dc",
-  "tezos:testnet",
-  "kadena:testnet04",
 ];
 
 export const DEFAULT_CHAINS = [...DEFAULT_MAIN_CHAINS, ...DEFAULT_TEST_CHAINS];
