@@ -50,7 +50,7 @@ export const DEFAULT_APP_METADATA = {
   name: "React App",
   description: "React App for WalletConnect",
   url: "https://walletconnect.com/",
-  icons: ["https://avatars.githubusercontent.com/u/37784886"],
+  icons: ["https://avatars.githubusercontent.com/u/5237680"],
   verifyUrl: "https://verify.walletconnect.com",
 };
 
