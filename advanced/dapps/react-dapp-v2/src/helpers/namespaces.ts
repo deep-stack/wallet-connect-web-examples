@@ -63,7 +63,6 @@ export const getSupportedRequiredMethodsByNamespace = (namespace: string) => {
 export const getSupportedOptionalMethodsByNamespace = (namespace: string) => {
   switch (namespace) {
     case "eip155":
-      return Object.values(DEFAULT_EIP155_OPTIONAL_METHODS);
     case "cosmos":
     case "solana":
     case "polkadot":

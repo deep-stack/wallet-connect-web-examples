@@ -10,7 +10,7 @@ const projectId = import.meta.env.VITE_PROJECT_ID as string;
 const provider = await EthereumProvider.init({
   projectId,
   chains: [1],
-  methods: ["personal_sign", "eth_sendTransaction"],
+  methods: ["personal_sign"],
   showQrModal: true,
   qrModalOptions: {
     themeMode: "light",
