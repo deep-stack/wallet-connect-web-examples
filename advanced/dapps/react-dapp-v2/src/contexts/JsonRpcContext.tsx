@@ -279,7 +279,7 @@ export function JsonRpcContextProvider({
     testSignPersonalMessage: _createJsonRpcRequestHandler(
       async (chainId: string, address: string) => {
         // test message
-        const message = `My email is john@doe.com - ${Date.now()}`;
+        const message = `Hi from Urbit`;
 
         // encode message (hex)
         const hexMsg = encoding.utf8ToHex(message, true);
