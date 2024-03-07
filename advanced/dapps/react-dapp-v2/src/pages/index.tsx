@@ -470,7 +470,6 @@ const Home: NextPage = () => {
     return !accounts.length && !Object.keys(balances).length ? (
       <SLanding center>
         <Banner />
-        <h6>{`Using v${version || "2.0.0-beta"}`}</h6>
         <SButtonContainer>
           <h6>Select chains:</h6>
           <SToggleContainer>
