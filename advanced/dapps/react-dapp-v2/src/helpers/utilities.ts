@@ -200,7 +200,7 @@ export const fromWad = (wad: BigNumberish, decimals = 18): string => {
 };
 
 export const LOCALSTORAGE_KEY_TESTNET = "TESTNET";
-export const INITIAL_STATE_TESTNET_DEFAULT = true;
+export const INITIAL_STATE_TESTNET_DEFAULT = false;
 
 export function setLocaleStorageTestnetFlag(value: boolean): void {
   if (typeof window !== "undefined") {
