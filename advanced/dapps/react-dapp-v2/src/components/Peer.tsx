@@ -2,6 +2,7 @@ import { SignClientTypes } from "@walletconnect/types";
 import * as React from "react";
 import styled from "styled-components";
 import { colors, fonts } from "../styles";
+import { Tooltip } from "react-tooltip";
 
 const SPeerOneLiner = styled.div`
   display: flex;
@@ -54,13 +55,29 @@ const SName = styled(SCenter as any)`
 interface PeerProps {
   oneLiner?: boolean;
   metadata: SignClientTypes.Metadata;
+  topic: string | undefined;
 }
+const truncateTopic = (topic: string | undefined, maxLength: number) => {
+  if (topic) {
+    return topic.length > maxLength
+      ? `${topic.substring(0, maxLength)}...${topic.slice(-3)}`
+      : topic;
+  }
+};
 
-const Peer = (props: PeerProps) =>
-  props.oneLiner ? (
+const Peer = (props: PeerProps) => {
+  const topic = props.topic;
+  const truncatedTopic = truncateTopic(props.topic, 3);
+
+  return props.oneLiner ? (
     <SPeerOneLiner>
       <img src={props.metadata.icons[0]} alt={props.metadata.name} />
-      <div>{props.metadata.name}</div>
+      <div>
+        <a data-tooltip-id="my-tooltip" data-tooltip-content={topic}>
+          {props.metadata.name} - {truncatedTopic}
+        </a>
+        <Tooltip id="my-tooltip" />
+      </div>
     </SPeerOneLiner>
   ) : (
     <SPeerCard>
@@ -70,5 +87,6 @@ const Peer = (props: PeerProps) =>
       <SUrl>{props.metadata.url}</SUrl>
     </SPeerCard>
   );
+};
 
 export default Peer;
