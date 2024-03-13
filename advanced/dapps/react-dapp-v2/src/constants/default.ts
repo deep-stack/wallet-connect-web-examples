@@ -6,6 +6,7 @@ if (!process.env.NEXT_PUBLIC_PROJECT_ID)
 export const DEFAULT_MAIN_CHAINS = [
   // mainnets
   "eip155:1",
+  "cosmos:cosmoshub-4",
 ];
 
 export const DEFAULT_TEST_CHAINS = [

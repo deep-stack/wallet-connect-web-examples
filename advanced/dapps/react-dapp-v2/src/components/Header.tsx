@@ -69,6 +69,7 @@ const Header = (props: HeaderProps) => {
           <SActiveSession>
             <p>{`Connected to`}</p>
             <p>{session.peer.metadata.name}</p>
+            <p>{session.topic}</p>
           </SActiveSession>
           <SHeaderActions>
             <GithubLogoContainer>
