@@ -139,6 +139,7 @@ const Blockchain: FC<PropsWithChildren<BlockchainProps>> = (
     typeof account !== "undefined" && typeof balances !== "undefined"
       ? balances[account]
       : [];
+
   return (
     <React.Fragment>
       <SAccount
@@ -160,7 +161,7 @@ const Blockchain: FC<PropsWithChildren<BlockchainProps>> = (
             </Column>
           ) : (
             <>
-              {!!assets && assets.length ? (
+              {!!assets && assets.length && assets[0].balance !== '' ? (
                 <SFullWidthContainer>
                   <h6>Balances</h6>
                   <Column center>
