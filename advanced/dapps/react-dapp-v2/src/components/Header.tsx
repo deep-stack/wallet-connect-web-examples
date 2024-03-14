@@ -67,8 +67,9 @@ const Header = (props: HeaderProps) => {
       {session ? (
         <>
           <SActiveSession>
-            <p>{`Connected to`}</p>
-            <p>{session.peer.metadata.name}</p>
+              <p style={{ fontSize: "15px" }}>{`Connected to`}</p>
+              <p style={{ fontSize: "15px" }}>{session.peer.metadata.name}</p>
+              <p style={{ fontSize: "15px" }}>Session Topic: {session.topic}</p>
           </SActiveSession>
           <SHeaderActions>
             <GithubLogoContainer>

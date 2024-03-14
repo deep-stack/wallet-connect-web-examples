@@ -16,12 +16,12 @@ const SPairingContainer = styled.div`
 `;
 
 const Pairing = (props: PairingProps) => {
-  const { peerMetadata } = props.pairing;
+  const { peerMetadata, topic } = props.pairing;
   return (
     <SPairingContainer onClick={props.onClick}>
       <div>
         {typeof peerMetadata !== "undefined" ? (
-          <Peer oneLiner metadata={peerMetadata} />
+          <Peer oneLiner metadata={peerMetadata} topic={topic} />
         ) : (
           <div>{`Unknown Wallet`}</div>
         )}
