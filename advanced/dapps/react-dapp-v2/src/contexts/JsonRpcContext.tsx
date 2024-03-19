@@ -82,6 +82,7 @@ type TRpcRequestCallback = (
 interface IContext {
   ping: () => Promise<void>;
   ethereumRpc: {
+    testSendTransaction: TRpcRequestCallback;
     testSignTransaction: TRpcRequestCallback;
     testEthSign: TRpcRequestCallback;
     testSignPersonalMessage: TRpcRequestCallback;
@@ -231,6 +232,45 @@ export function JsonRpcContextProvider({
   // -------- ETHEREUM/EIP155 RPC METHODS --------
 
   const ethereumRpc = {
+      testSendTransaction: _createJsonRpcRequestHandler(
+        async (chainId: string, address: string) => {
+          const caipAccountAddress = `${chainId}:${address}`;
+          const account = accounts.find(
+            (account) => account === caipAccountAddress
+          );
+          if (account === undefined)
+            throw new Error(`Account for ${caipAccountAddress} not found`);
+
+          const tx = await formatTestTransaction(account);
+
+          const balance = BigNumber.from(balances[account][0].balance || "0");
+          if (balance.lt(BigNumber.from(tx.gasPrice).mul(tx.gasLimit))) {
+            return {
+              method: DEFAULT_EIP155_METHODS.ETH_SEND_TRANSACTION,
+              address,
+              valid: false,
+              result: "Insufficient funds for intrinsic transaction cost",
+            };
+          }
+
+          const result = await client!.request<string>({
+            topic: session!.topic,
+            chainId,
+            request: {
+              method: DEFAULT_EIP155_METHODS.ETH_SEND_TRANSACTION,
+              params: [tx],
+            },
+          });
+
+          // format displayed result
+          return {
+            method: DEFAULT_EIP155_METHODS.ETH_SEND_TRANSACTION,
+            address,
+            valid: true,
+            result,
+          };
+        }
+      ),
     testSignTransaction: _createJsonRpcRequestHandler(
       async (chainId: string, address: string) => {
         const caipAccountAddress = `${chainId}:${address}`;
